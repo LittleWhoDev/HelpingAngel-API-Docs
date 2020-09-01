@@ -1,0 +1,119 @@
+openapi: 3.0.0
+info:
+  title: Helping Angel
+  version: '1.0'
+  description: |-
+    Key features:
+    - handle posts (basic CRUD + searching by location/category/content/type)
+    - handle users (login/register, roles & permissions, basic CRUD)
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /posts:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ../models/Post.v1.yaml
+      operationId: get-posts
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: content
+          description: Full text search
+        - schema:
+            type: integer
+          in: query
+          name: range
+          description: KM range around "location"
+        - schema:
+            type: string
+          in: query
+          name: location
+          description: Current location
+        - schema:
+            type: string
+          in: query
+          name: category
+          description: Post category
+        - schema:
+            type: string
+          in: query
+          name: type
+          description: Post type
+      description: Search and filter posts
+    post:
+      summary: ''
+      operationId: post-posts
+      responses:
+        '200':
+          description: OK
+      description: Create a new post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Post.v1.yaml
+        description: ''
+  '/posts/{postId}':
+    parameters:
+      - schema:
+          type: string
+        name: postId
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Post.v1.yaml
+      operationId: get-posts-postId
+      description: ''
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+    put:
+      summary: ''
+      operationId: put-posts-postId
+      responses:
+        '200':
+          description: OK
+      description: Update post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Post.v1.yaml
+components:
+  schemas: {}
+  securitySchemes:
+    Standard:
+      type: oauth2
+      flows:
+        password:
+          tokenUrl: ''
+          refreshUrl: ''
+          scopes: {}
+        clientCredentials:
+          tokenUrl: ''
+          refreshUrl: ''
+          scopes: {}
+      description: Should support email and SSO (Google and Facebook at least)
+security:
+  - Standard: []

@@ -1,0 +1,20 @@
+title: User
+type: object
+properties:
+  id:
+    type: string
+  name:
+    type: string
+  role:
+    type: string
+  email:
+    type: string
+  status:
+    type: string
+    description: verified or unverified
+required:
+  - id
+  - name
+  - role
+  - email
+  - status

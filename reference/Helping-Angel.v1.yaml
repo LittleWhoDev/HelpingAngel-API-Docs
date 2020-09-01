@@ -1,0 +1,7 @@
+paths:
+  /posts:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-posts

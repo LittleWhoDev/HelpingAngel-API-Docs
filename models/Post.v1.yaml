@@ -1,0 +1,25 @@
+title: Post
+type: object
+properties:
+  id:
+    type: string
+  type:
+    type: string
+  category:
+    type: string
+  author:
+    $ref: ./User.v1.yaml
+  description:
+    type: string
+  location:
+    type: object
+    description: 'Based on https://docs.mongodb.com/manual/reference/operator/query/near/'
+  status:
+    type: string
+    description: 'pending, approved or verified'
+required:
+  - id
+  - type
+  - category
+  - location
+  - status
