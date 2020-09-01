@@ -11,7 +11,7 @@ servers:
 paths:
   /posts:
     get:
-      summary: Your GET endpoint
+      summary: Search posts
       tags: []
       responses:
         '200':
@@ -71,7 +71,7 @@ paths:
         in: path
         required: true
     get:
-      summary: Your GET endpoint
+      summary: Get individual Post
       tags: []
       responses:
         '200':
@@ -88,6 +88,11 @@ paths:
             schema:
               type: object
               properties: {}
+          application/xml:
+            schema:
+              type: object
+              properties: {}
+        description: ''
     put:
       summary: ''
       operationId: put-posts-postId
