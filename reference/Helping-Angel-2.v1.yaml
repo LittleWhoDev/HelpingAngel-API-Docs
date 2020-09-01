@@ -81,7 +81,7 @@ paths:
               schema:
                 $ref: ../models/Post.v1.yaml
       operationId: get-posts-postId
-      description: ''
+      description: Get individual post
       requestBody:
         content:
           application/json:
